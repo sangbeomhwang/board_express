@@ -7,7 +7,7 @@ const items = [
 ];
 
 exports.index = (req, res) => {
-  res.render("index.html");
+  res.render("board/index.html");
 };
 
 exports.list = (req, res) => {
