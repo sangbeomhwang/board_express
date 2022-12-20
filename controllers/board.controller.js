@@ -11,14 +11,14 @@ exports.index = (req, res) => {
 };
 
 exports.list = (req, res) => {
-  res.render("board/list.html", { items });
+  res.render("list.html", { items });
 };
 
-exports.write_get = (req, res) => {
-  res.render("board/write.html");
+exports.getWrite = (req, res) => {
+  res.render("write.html");
 };
 
-exports.write_post = (req, res) => {
+exports.postWrite = (req, res) => {
   const { content, subject, name } = req.body;
   items.push({ content, subject, name });
   res.redirect(`/view?index=${items.length - 1}`);
@@ -30,20 +30,20 @@ exports.view = (req, res) => {
     ...items[index],
     index,
   };
-  res.render("board/view.html", { item });
+  res.render("view.html", { item });
 };
 
-exports.modify_get = (req, res) => {
+exports.getModify = (req, res) => {
   const { index } = req.query;
   const item = {
     ...items[index],
     index,
   };
 
-  res.render("board/modify.html", { item });
+  res.render("modify.html", { item });
 };
 
-exports.modify_post = (req, res) => {
+exports.postModify = (req, res) => {
   const { index, subject, content, name } = req.body;
   items[index].subject = subject;
   items[index].content = content;
