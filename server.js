@@ -13,6 +13,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(router);
 
+app.get("/", (req, res) => {
+  res.render("index.html");
+});
+
 app.listen(3000, () => {
   console.log("server start");
 });

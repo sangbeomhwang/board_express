@@ -6,10 +6,6 @@ const items = [
   },
 ];
 
-exports.index = (req, res) => {
-  res.render("board/index.html");
-};
-
 exports.list = (req, res) => {
   res.render("board/list.html", { items });
 };
