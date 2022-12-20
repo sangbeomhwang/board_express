@@ -11,17 +11,17 @@ exports.index = (req, res) => {
 };
 
 exports.list = (req, res) => {
-  res.render("list.html", { items });
+  res.render("board/list.html", { items });
 };
 
 exports.getWrite = (req, res) => {
-  res.render("write.html");
+  res.render("board/write.html");
 };
 
 exports.postWrite = (req, res) => {
   const { content, subject, name } = req.body;
   items.push({ content, subject, name });
-  res.redirect(`/view?index=${items.length - 1}`);
+  res.redirect(`view?index=${items.length - 1}`);
 };
 
 exports.view = (req, res) => {
@@ -30,7 +30,7 @@ exports.view = (req, res) => {
     ...items[index],
     index,
   };
-  res.render("view.html", { item });
+  res.render("board/view.html", { item });
 };
 
 exports.getModify = (req, res) => {
@@ -40,7 +40,7 @@ exports.getModify = (req, res) => {
     index,
   };
 
-  res.render("modify.html", { item });
+  res.render("board/modify.html", { item });
 };
 
 exports.postModify = (req, res) => {
@@ -53,11 +53,11 @@ exports.postModify = (req, res) => {
   // const { index, ...rest } = req.body;
   // items[index] = rest;
 
-  res.redirect(`/view?index=${index}`);
+  res.redirect(`view?index=${index}`);
 };
 
 exports.delete = (req, res) => {
   const { index } = req.query;
   items.splice(index, 1);
-  res.redirect("/list");
+  res.redirect("list");
 };
